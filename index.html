@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Countdown to Success</title>
+  <style>
+    /* Base Styling */
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      color: #ffd700; /* Gold color for text */
+      background: linear-gradient(45deg, #1a1a1d, #2c2f33); /* Gradient dark background */
+      text-align: center;
+    }
+
+    /* Countdown Container Styling */
+    .countdown {
+      background: #333645;
+      padding: 2em;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+      margin-bottom: 1em;
+    }
+
+    /* Main Title Styling */
+    .countdown h1 {
+      font-size: 2.8em;
+      margin-bottom: 0.5em;
+      color: #ffd700;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Time Display Styling */
+    .time {
+      font-size: 1.8em;
+      margin: 0.5em 0;
+      color: #ffffff;
+      font-weight: 500;
+    }
+
+    /* Motivation Section Styling */
+    .motivation {
+      margin-top: 2em;
+      font-size: 1.2em;
+      color: #cccccc;
+      max-width: 600px;
+      line-height: 1.6;
+      font-style: italic;
+      padding: 1em;
+      border: 1px solid #ffd700;
+      border-radius: 10px;
+    }
+
+    /* Highlighted Words */
+    .motivation span {
+      color: #ffd700;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="countdown">
+    <h1>Countdown to Success</h1>
+    <div class="time" id="timer">
+      0 Days 0 Hours 0 Minutes 0 Seconds
+    </div>
+  </div>
+
+  <!-- Motivational Section -->
+  <div class="motivation">
+    “Set your goals high, work towards them with <span>passion</span> and <span>integrity</span>. 
+    <span>Success</span> is not just about wealth; it’s about being a good person. 
+    Drive your ambitions forward—whether it's for a <span>Porsche</span> or a <span>better life</span>.”
+  </div>
+
+  <script>
+    // Set the target date for the countdown
+    const targetDate = new Date("July 26, 2030 00:00:00").getTime();
+
+    // Update the countdown every second
+    const countdown = setInterval(() => {
+      const now = new Date().getTime();
+      const timeLeft = targetDate - now;
+
+      // Calculate days, hours, minutes, and seconds
+      const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+      // Display the result in the timer element
+      document.getElementById("timer").innerHTML = 
+        days + " Days " + hours + " Hours " + minutes + " Minutes " + seconds + " Seconds";
+
+      // If the countdown is over, display a message
+      if (timeLeft < 0) {
+        clearInterval(countdown);
+        document.getElementById("timer").innerHTML = "Countdown Finished!";
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
